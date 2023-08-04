@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { login, register, current } = require('../contriollers/users');
+const { login, register, current } = require('../controllers/users');
 const { auth } = require('../middleware/auth');
 
 /*   /api/user/login */
