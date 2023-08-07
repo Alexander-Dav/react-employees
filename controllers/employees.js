@@ -12,10 +12,10 @@ const all = async (req, res) => {
 const add = async (req, res) => {
   try {
     const data = req.body;
-    if (!data.firstName || !data.lastName || !data.age || !data.adress) {
+    if (!data.firstName || !data.lastName || !data.age || !data.address) {
       return res.status(400).json({ message: 'Все поля обязательны' });
     }
-    const empLoyee = await prisma.user.update({
+    /* const empLoyee = await prisma.user.update({
       where: {
         id: req.user.id,
       },
@@ -24,9 +24,18 @@ const add = async (req, res) => {
           create: data,
         },
       },
+    });*/
+    const empLoyee = await prisma.empLoyee.create({
+      data: {
+        ...data,
+        userId,
+      },
     });
+
+    return res.status(201).json(empLoyee);
   } catch {}
 };
 module.exports = {
-  all, add
+  all,
+  add,
 };
