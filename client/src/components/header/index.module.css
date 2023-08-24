@@ -1,5 +1,15 @@
-.main {
-  width: 80%;
-  height: 100%;
-  margin-inline: auto;
+.ant-layout-header {
+  background: none;
+}
+.header {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.teamIcon {
+  font-size: 26px;
+  margin-right: 12px;
 }

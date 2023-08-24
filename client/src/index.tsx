@@ -5,17 +5,24 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { Paths } from './paths';
 import Login from './pages/login';
+import { ConfigProvider, theme } from 'antd';
+import Register from './pages/register';
 
 const router = createBrowserRouter([
   { path: Paths.home, element: <h1>Home</h1> },
   { path: Paths.login, element: <Login /> },
-  { path: Paths.register, element: <h1>Register</h1> },
+  { path: Paths.register, element: <Register /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ConfigProvider
+      theme={{
+        algorithm: theme.darkAlgorithm,
+      }}>
+      <RouterProvider router={router} />
+    </ConfigProvider>
   </React.StrictMode>,
 );
 
