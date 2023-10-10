@@ -21,8 +21,10 @@ const CustomButton = ({
   loading,
   shape,
   ghost,
+  icon,
   onClick,
 }: Props) => {
+  console.log('ghost', ghost);
   return (
     <Form.Item>
       <Button
@@ -32,6 +34,7 @@ const CustomButton = ({
         loading={loading}
         shape={shape}
         ghost={ghost}
+        icon={icon}
         onClick={onClick}>
         {children}
       </Button>

@@ -7,22 +7,35 @@ import { Paths } from './paths';
 import Login from './pages/login';
 import { ConfigProvider, theme } from 'antd';
 import Register from './pages/register';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import { Employees } from './pages/employees';
+import { Status } from './pages/status';
+import { AddEmployee } from './pages/add-employee';
+import { Employee } from './components/employee';
+import { EditEmployee } from './pages/edit-employee';
 
 const router = createBrowserRouter([
-  { path: Paths.home, element: <h1>Home</h1> },
+  { path: Paths.home, element: <Employees /> },
   { path: Paths.login, element: <Login /> },
   { path: Paths.register, element: <Register /> },
+  { path: Paths.employeeAdd, element: <AddEmployee /> },
+  { path: `${Paths.status}/:status`, element: <Status /> },
+  { path: `${Paths.employee}/:id`, element: <Employee /> },
+  { path: `${Paths.employeeEdit}/:id`, element: <EditEmployee /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <ConfigProvider
-      theme={{
-        algorithm: theme.darkAlgorithm,
-      }}>
-      <RouterProvider router={router} />
-    </ConfigProvider>
+    <Provider store={store}>
+      <ConfigProvider
+        theme={{
+          algorithm: theme.darkAlgorithm,
+        }}>
+        <RouterProvider router={router} />
+      </ConfigProvider>
+    </Provider>
   </React.StrictMode>,
 );
 
